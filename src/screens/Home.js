@@ -3,6 +3,7 @@ import { Navigate, useNavigate } from "react-router-dom";
 import { auth, storage, db } from '../firebase';
 import '../styles/Home.css';
 import IconSoloMeetTEA from '../icons/icon-solo-meet-tea.png';
+import '@fontsource/poetsen-one';
 
 const Home = (props) => {
     const [openModalPublicar, setOpenModalPublicar] = useState(false);
@@ -197,6 +198,19 @@ const Home = (props) => {
 
     return (
         <div className="container-home">
+            <div className="navbar"> 
+            <nav className="nav flex-column">
+             <a class="nav-link active" id="Inicio" aria-current="page" href="./Home">Inicio </a>
+             <a class="nav-link" id="perfil" href="./Profile">Perfil</a>
+             <a class="nav-link" id="config" href="#">Configurações</a>
+             <button className="btn-post" id="btn-chat" onClick={handleOpenChat}>
+                {showChat ? 'Fechar' : 'Chat'}
+            </button>
+             <button className="btn-post" id="btn-pub" onClick={() => setOpenModalPublicar(!openModalPublicar)}>
+                {openModalPublicar ? 'Fechar' : 'Postar'} 
+              </button>
+             </nav>
+         </div>
             <div className="header">
                 <h1 className="title">
                     <h1 style={{ textAlign: 'center', display: 'flex', alignItems: 'center', justifyContent: 'center' }}>
@@ -209,18 +223,13 @@ const Home = (props) => {
 
             <p>Olá, {props.user}!</p>
 
-            <button className="btn-post" onClick={() => setOpenModalPublicar(!openModalPublicar)}>
-                {openModalPublicar ? 'Fechar' : 'Postar'} Publicação
-            </button>
             <button className="btn-post" onClick={() => setOpenModalVisualizar(!openModalVisualizar)}>
                 {openModalVisualizar ? 'Fechar' : 'Visualizar'} Posts
             </button>
             <button className="btn-post" onClick={() => setOpenModalPerfis(!openModalPerfis)}>
                 {openModalPerfis ? 'Fechar' : 'Visualizar'} Perfis
             </button>
-            <button className="btn-post" onClick={handleOpenChat}>
-                {showChat ? 'Fechar' : 'Abrir'} Chat MEET TEA
-            </button>
+           
             <button className="btn-post" onClick={() => navigate('/profile')}>
                 Meu Perfil
             </button>

@@ -4,12 +4,13 @@ import { auth, storage, db } from '../firebase.js';
 import { ToastContainer, toast } from 'react-toastify';
 import 'react-toastify/dist/ReactToastify.css';
 import { Link } from 'react-router-dom';
-
-
+import 'bootstrap/dist/css/bootstrap.min.css';
+import '@fontsource/poetsen-one';
 
 import '../styles/logincadastro.css';
 import IconSoloMeetTEA from '../icons/icon-solo-meet-tea.png';
 import capa_meet_tea from '../img/capa_meet_tea.png';
+import animalogin from '../img/animalogin.gif';
 
 const LoginRegistro = (props) => {
     const [containerLogar, setContainerLogar] = useState(true);
@@ -141,11 +142,14 @@ const LoginRegistro = (props) => {
 
     return (
         <div className="App">
+            <div className="gif">
+                <img src={animalogin} width={550} height={550} alt="..." />
+            </div>
             <div className="main">
                 {containerLogar ?
                     <div className="main-container-login">
                         <h1 style={{ textAlign: 'center', display: 'flex', alignItems: 'center', justifyContent: 'center' }}>
-                            <img src={IconSoloMeetTEA} width={40} style={{ margin: '0 10px' }} />MEET TEA <img style={{ margin: '0 10px' }} src={IconSoloMeetTEA} width={40} />
+                            <img src={IconSoloMeetTEA} width={55} style={{ margin: '0 10px' }} />MEET TEA <img style={{ margin: '0 10px' }} src={IconSoloMeetTEA} width={55} />
                         </h1>
                         <input type="email" placeholder="User@gmail.com" id="email-login" />
                         <input type="password" id="password-login" placeholder="Senha" />
@@ -171,8 +175,9 @@ const LoginRegistro = (props) => {
                         <input type="text" id="phone-cadastro" placeholder="Telefone" />
                         <input type="text" id="address-cadastro" placeholder="Endereço" />
                         <textarea id="about-cadastro" placeholder="Sobre mim"></textarea>
-                        <input type="file" id="file-cadastro" />
-                        <label>Foto do perfil</label>
+                        <label>Carteira CIPTEA</label>
+                        <input type="file" id="file-cadastro"/>
+                        <label>Foto de perfil</label>
                         <input type="file" id="profile-photo-cadastro" /> {/* Novo campo */}
                         <div style={{ display: 'block', alignItems: 'center' }}>
                             <input
@@ -190,7 +195,9 @@ const LoginRegistro = (props) => {
                         <button onClick={(e) => criarConta(e)}>Registrar-se</button>
                         <p>Já tem uma Conta? <span onClick={() => setContainerLogar(!containerLogar)}>Logar-se</span></p>
                     </div>
+                    
                 }
+               
 
                 {showResetPassword && (
                     <div className="reset-password-modal">
